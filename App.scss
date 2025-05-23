@@ -1,0 +1,123 @@
+@import './stylesheets/main';
+
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0 0 15px;
+}
+
+// Container
+.container {
+  width: 100%;
+  max-width: 1170px;
+  margin: 0 auto;
+  padding-left: 12px;
+  padding-right: 12px;
+  position: relative;
+  z-index: 1;
+  @include transition(.3s);
+  @include xxl-min {
+    max-width: $container-width;
+  }
+}
+
+.wrapper {
+  width: 100%;
+  &_content {
+    width: 100%;
+    @include lg-min {
+      padding-left: 72px;
+    }
+  }
+}
+.btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  @include transition(.3s);
+  @include border-radius(8px);
+  background-color: transparent;
+  padding: 0;
+  &:hover {
+      background-color: $color-grey-light
+  }
+}
+.btnPrmry {
+  background-color: $color-white;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  @include border-radius(8px);
+  border: 1px solid $base-light-white;
+  padding: 0 14px;
+  cursor: pointer;
+  @include inter(600);
+  @include font(14px, $color-grey-thin);
+  @include transition();
+  &:hover {
+      background-color: $base-light-white;
+  }
+}
+.btnSecondary{
+  background-color: $color-secondary;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  @include border-radius(8px);
+  border: 1px solid $base-light-white;
+  padding: 0 14px;
+  cursor: pointer;
+  @include inter(600);
+  @include font(14px, $color-white);
+  @include transition();
+  &:hover {
+      background-color: $base-light-white;
+  }
+}
+
+.rdrCalendarWrapper {
+  --rdr-selected-range-color: $color-secondary;
+  --rdr-background-color: #f0f0f0;
+}
+
+.rdrDayNumber span {
+  color: #333;
+}
+
+.rdrDayStartPreview, 
+.rdrDayEndPreview {
+  border: 2px solid $color-secondary; /* Custom preview border color */
+}
+
+.rdrSelected, 
+.rdrInRange {
+  background-color: $color-secondary !important; /* Custom selected date range background */
+}
+.rdrDateRangePickerWrapper {
+  width: 100%;
+  .rdrCalendarWrapper {
+    flex: 1;
+    .rdrMonth {
+      width: 100%;
+    }
+  }
+  .rdrDefinedRangesWrapper {
+    display: none;
+    @include sm-min {
+      display: block;
+    }
+  }
+}
